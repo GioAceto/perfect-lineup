@@ -6,6 +6,14 @@ const totalSalary = (lineup) => {
 
 const validateSalary = (lineup) => totalSalary(lineup) < 45000
 
+getPositionCounts = (lineup) => {
+  return lineup.reduce((total, player) => {
+    total[player.position] = total[player.position] === undefined ? 1 : total[player.position] + 1
+
+    return total
+  }, {})
+}
+
 
 
 const validateLineup = (lineup) => {
