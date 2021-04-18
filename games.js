@@ -1,34 +1,33 @@
-const getGameCount = (lineup) => {
-  return lineup.map((player) => {
-    return (player.gameId)
-  })
-}
-
 const validateGameCount = (lineup) => {
-  let gameArr = getGameCount(lineup)
-  let empty = []
-  let empty2 = []
-  let empty3 = []
-  let empty4 = []
+  let filteredGames = lineup.map(player => player.gameId)
 
-  for (let i = 0; i < gameArr.length; i++) {
-    if (empty.indexOf(gameArr[i]) === -1) {
-      empty.push(gameArr[i])
-    } else if (empty.indexOf(gameArr[i]) !== -1) {
-      empty2.push(gameArr[i])
-    } else if (empty2.indexOf(gameArr[i]) !== -1) {
-      empty3.push(gameArr[i])
+
+  let uniqueGames = []
+
+  for (let i = 0; i < filteredGames.length; i++) {
+    const game = filteredGames[i]
+
+    if (!uniqueGames.includes(game)) {
+      uniqueGames.push(game)
     }
   }
 
-  for (let i = 0; i < empty2.length; i++) {
-    if (empty3.indexOf(gameArr[i]) === -1) {
-      empty3.push(empty2[i])
-      empty2.shift()
-    }
+  let numberOfUses = []
+
+  for (let i = 0; i < uniqueGames.length; i++) {
+    const gameId = uniqueGames[i]
+
+    let numberOfOccurances = filteredGames.filter(game => game === gameId).length
+
+    numberOfUses.push(numberOfOccurances)
   }
 
-  return empty2.length
+  if (Math.max(...numberOfUses) > 3) {
+    return false
+  } else {
+    return true
+  }
 }
+
 
 module.exports = validateGameCount
