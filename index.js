@@ -17,6 +17,27 @@ const getTeamCount = (lineup) => {
   })
 }
 
+const validateTeamCount = (lineup) => {
+  let result = true
+
+  let teamArr = getTeamCount(lineup)
+  let arr1 = []
+  let arr2 = []
+  let arr3 = []
+
+  for (let i = 0; i < teamArr.length; i++) {
+    if (arr1.includes(!teamArr[i])) {
+      arr1.push(teamArr[i])
+    } else if (arr1.includes(teamArr[i]) && (arr3.includes(!teamArr[i]))) {
+      arr2.push(teamArr[i])
+    } else if (arr3.includes(teamArr[i])) {
+      result = false
+    }
+  }
+
+  return result
+}
+
 
 const validateLineup = (lineup) => {
   if ((validateSalary(lineup) === true) &&
