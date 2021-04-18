@@ -34,6 +34,16 @@ const getSS = lineup.filter(function (e) {
   return e.position === 'SS'
 })
 
+const validatePositions = (lineup) => {
+  return ((getOF.length === 3) &&
+    (getP.length === 1) &&
+    (getC.length === 1) &&
+    (get1B.length === 1) &&
+    (get2B.length === 1) &&
+    (get3B.length === 1) &&
+    (getSS.length === 1))
+}
+
 
 
 const validateLineup = (lineup) => {
