@@ -35,8 +35,6 @@ const getSS = (lineup) => lineup.filter(function (e) {
 })
 
 
-
-
 const validateLineup = (lineup) => {
   if ((validateSalary(lineup) === true) &&
     (getOF(lineup).length === 3) &&
