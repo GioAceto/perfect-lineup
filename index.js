@@ -6,48 +6,50 @@ const totalSalary = (lineup) => {
 
 const validateSalary = (lineup) => totalSalary(lineup) < 45000
 
-const getOF = lineup.filter(function (e) {
+const getOF = (lineup) => lineup.filter(function (e) {
   return e.position === 'OF'
 })
 
-const getP = lineup.filter(function (e) {
+const getP = (lineup) => lineup.filter(function (e) {
   return e.position === 'P'
 })
 
-const getC = lineup.filter(function (e) {
+const getC = (lineup) => lineup.filter(function (e) {
   return e.position === 'C'
 })
 
-const get1B = lineup.filter(function (e) {
+const get1B = (lineup) => lineup.filter(function (e) {
   return e.position === '1B'
 })
 
-const get2B = lineup.filter(function (e) {
+const get2B = (lineup) => lineup.filter(function (e) {
   return e.position === '2B'
 })
 
-const get3B = lineup.filter(function (e) {
+const get3B = (lineup) => lineup.filter(function (e) {
   return e.position === '3B'
 })
 
-const getSS = lineup.filter(function (e) {
+const getSS = (lineup) => lineup.filter(function (e) {
   return e.position === 'SS'
 })
 
-const validatePositions = (lineup) => {
-  return ((getOF.length === 3) &&
-    (getP.length === 1) &&
-    (getC.length === 1) &&
-    (get1B.length === 1) &&
-    (get2B.length === 1) &&
-    (get3B.length === 1) &&
-    (getSS.length === 1))
-}
 
 
 
 const validateLineup = (lineup) => {
-  return validateSalary(lineup)
+  if ((validateSalary(lineup) === true) &&
+    (getOF(lineup).length === 3) &&
+    (getP(lineup).length === 1) &&
+    (getC(lineup).length === 1) &&
+    (get1B(lineup).length === 1) &&
+    (get2B(lineup).length === 1) &&
+    (get3B(lineup).length === 1) &&
+    (getSS(lineup).length === 1)) {
+    return true
+  }
+
+  return false
 }
 
 
