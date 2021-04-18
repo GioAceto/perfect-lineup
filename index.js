@@ -19,24 +19,21 @@ const getTeamCount = (lineup) => {
 
 const validateTeamCount = (lineup) => {
   let result = true
-
   let teamArr = getTeamCount(lineup)
-  let arr1 = []
-  let arr2 = []
-  let arr3 = []
+  let empty = []
+  let empty2 = []
 
   for (let i = 0; i < teamArr.length; i++) {
-    if (arr1.includes(!teamArr[i])) {
-      arr1.push(teamArr[i])
-    } else if (arr1.includes(teamArr[i]) && (arr3.includes(!teamArr[i]))) {
-      arr2.push(teamArr[i])
-    } else if (arr3.includes(teamArr[i])) {
-      result = false
+    if (empty.indexOf(teamArr[i]) === -1) {
+      empty.push(teamArr[i])
+    } else if (empty.indexOf(teamArr[i]) !== -1) {
+      empty2.push(teamArr[i])
     }
   }
 
-  return result
+  return empty2.length
 }
+
 
 
 const validateLineup = (lineup) => {
@@ -47,7 +44,8 @@ const validateLineup = (lineup) => {
     (get1B(lineup).length === 1) &&
     (get2B(lineup).length === 1) &&
     (get3B(lineup).length === 1) &&
-    (getSS(lineup).length === 1)) {
+    (getSS(lineup).length === 1) &&
+    (validateTeamCount(lineup) >= 2)) {
     return true
   }
 
