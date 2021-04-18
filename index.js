@@ -1,4 +1,6 @@
-const { getOF, getP, getC, get1B, get2B, get3B, getSS } = require('./positions')
+const {
+  getOF, getP, getC, get1B, get2B, get3B, getSS
+} = require('./positions')
 
 
 const totalSalary = (lineup) => {
