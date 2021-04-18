@@ -1,33 +1,32 @@
-const getTeamCount = (lineup) => {
-  return lineup.map((player) => {
-    return (player.teamId)
-  })
-}
-
 const validateTeamCount = (lineup) => {
-  let teamArr = getTeamCount(lineup)
-  let empty = []
-  let empty2 = []
-  let empty3 = []
+  let filteredTeams = lineup.map(player => player.teamId)
 
-  for (let i = 0; i < teamArr.length; i++) {
-    if (empty.indexOf(teamArr[i]) === -1) {
-      empty.push(teamArr[i])
-    } else if (empty.indexOf(teamArr[i]) !== -1) {
-      empty2.push(teamArr[i])
-    } else if (empty2.indexOf(teamArr[i]) !== -1) {
-      empty3.push(teamArr[i])
+
+  let uniqueTeams = []
+
+  for (let i = 0; i < filteredTeams.length; i++) {
+    const game = filteredTeams[i]
+
+    if (!uniqueTeams.includes(game)) {
+      uniqueTeams.push(game)
     }
   }
 
-  for (let i = 0; i < empty2.length; i++) {
-    if (empty3.indexOf(teamArr[i]) === -1) {
-      empty3.push(empty2[i])
-      empty2.shift()
-    }
+  let numberOfUses = []
+
+  for (let i = 0; i < uniqueTeams.length; i++) {
+    const teamId = uniqueTeams[i]
+
+    let numberOfOccurances = filteredTeams.filter(team => team === teamId).length
+
+    numberOfUses.push(numberOfOccurances)
   }
 
-  return empty2.length
+  if (Math.max(...numberOfUses) > 2) {
+    return false
+  } else {
+    return true
+  }
 }
 
 module.exports = validateTeamCount

@@ -14,7 +14,7 @@ const validateLineup = (lineup) => {
     (get2B(lineup).length === 1) &&
     (get3B(lineup).length === 1) &&
     (getSS(lineup).length === 1) &&
-    (validateTeamCount(lineup) < 1) &&
+    (validateTeamCount(lineup) === true) &&
     (validateGameCount(lineup) === true)) {
     return true
   }
