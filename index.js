@@ -11,6 +11,12 @@ const totalSalary = (lineup) => {
 
 const validateSalary = (lineup) => totalSalary(lineup) < 45000
 
+const getTeamCount = (lineup) => {
+  return lineup.map((player) => {
+    return (player.teamId)
+  })
+}
+
 
 const validateLineup = (lineup) => {
   if ((validateSalary(lineup) === true) &&
