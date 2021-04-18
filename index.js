@@ -18,7 +18,6 @@ const getTeamCount = (lineup) => {
 }
 
 const validateTeamCount = (lineup) => {
-  let result = true
   let teamArr = getTeamCount(lineup)
   let empty = []
   let empty2 = []
