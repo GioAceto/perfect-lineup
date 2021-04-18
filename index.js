@@ -6,16 +6,16 @@ const validateGameCount = require('./games')
 const validateSalary = require('./salaries')
 
 const validateLineup = (lineup) => {
-  if ((validateSalary(lineup) === true) &&
+  if ((validateSalary(lineup)) &&
+    (validateTeamCount(lineup)) &&
+    (validateGameCount(lineup)) &&
     (getOF(lineup).length === 3) &&
     (getP(lineup).length === 1) &&
     (getC(lineup).length === 1) &&
     (get1B(lineup).length === 1) &&
     (get2B(lineup).length === 1) &&
     (get3B(lineup).length === 1) &&
-    (getSS(lineup).length === 1) &&
-    (validateTeamCount(lineup) === true) &&
-    (validateGameCount(lineup) === true)) {
+    (getSS(lineup).length === 1)) {
     return true
   }
 

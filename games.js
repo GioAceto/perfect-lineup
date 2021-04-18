@@ -1,8 +1,7 @@
 const validateGameCount = (lineup) => {
   let filteredGames = lineup.map(player => player.gameId)
-
-
   let uniqueGames = []
+  let numberOfUses = []
 
   for (let i = 0; i < filteredGames.length; i++) {
     const game = filteredGames[i]
@@ -11,8 +10,6 @@ const validateGameCount = (lineup) => {
       uniqueGames.push(game)
     }
   }
-
-  let numberOfUses = []
 
   for (let i = 0; i < uniqueGames.length; i++) {
     const gameId = uniqueGames[i]
