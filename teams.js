@@ -20,7 +20,4 @@ const validateTeamCount = (lineup) => {
   return empty2.length
 }
 
-module.exports = {
-  getTeamCount,
-  validateTeamCount
-}
+module.exports = validateTeamCount
