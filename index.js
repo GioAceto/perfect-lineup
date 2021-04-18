@@ -2,6 +2,7 @@ const {
   getOF, getP, getC, get1B, get2B, get3B, getSS
 } = require('./positions')
 const validateTeamCount = require('./teams')
+const validateGameCount = require('./games')
 const validateSalary = require('./salaries')
 
 const validateLineup = (lineup) => {
@@ -13,7 +14,8 @@ const validateLineup = (lineup) => {
     (get2B(lineup).length === 1) &&
     (get3B(lineup).length === 1) &&
     (getSS(lineup).length === 1) &&
-    (validateTeamCount(lineup) < 1)) {
+    (validateTeamCount(lineup) < 1) &&
+    (validateGameCount(lineup) < 1)) {
     return true
   }
 
